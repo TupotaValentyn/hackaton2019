@@ -41,10 +41,17 @@
         height: 200vh;
         width: 100vw;
     }
+<<<<<<< HEAD
     .form {
         width: 500px;
     }
 
+=======
+    .marker {
+        width: 16px !important;
+        height: 16px !important;
+    }
+>>>>>>> add marker
     * {
         margin: 0;
         padding: 0;

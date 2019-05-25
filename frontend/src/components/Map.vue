@@ -2,10 +2,16 @@
     <div class="container">
         <GmapMap
                 class="map"
-                :center="{lat: 49.43777386178491, lng: 32.06162042036193}"
+                :center="center"
                 :zoom="12"
                 map-type-id="terrain"
+                @click="click"
         >
+            <GmapMarker :position="{lat: 49.43777386178491, lng: 32.06162042036193}"
+                        :icon="'http://icons.iconarchive.com/icons/hopstarter/sleek-xp-basic/128/Zoom-icon.png'"
+                        :clicable="true"
+
+            />
         </GmapMap>
 
         <ul class="list">
@@ -79,12 +85,42 @@
                 }]
             }
         },
-        methods: {
-            log() {
-                console.log(this.array)
+
+        data() {
+            return {
+                array: [],
+                boolean: false,
+                center: {lat: 0, lng: 0},
+                formsCoordinate: {lat: 0, lng: 0},
+                isAdd: false
+            }
+   },
+        computed: {
+            geoLocation: () => {
+                navigator.geolocation.getCurrentPosition((data) => {
+                    console.log(data);
+                    return data;
+                });
             }
         },
-
+        beforeCreate() {
+            navigator.geolocation.getCurrentPosition((data) => {
+                this.center = {lat: data.coords.latitude, lng: data.coords.longitude};
+                console.log(data);
+            });
+        },
+        methods: {
+            click (event) {
+                if(this.isAdd) {
+                    let coordinate = {lat: event.latLng.lat(), lng: event.latLng.lng()};
+                    if (coordinate) {
+                        this.formsCoordinate = coordinate;
+                    }
+                    this.click = () => {};
+                    // TODO: Open register form
+                }
+            }
+        },
     }
 </script>
 

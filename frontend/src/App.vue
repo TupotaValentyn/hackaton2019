@@ -24,6 +24,10 @@
 </script>
 
 <style>
+    @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic|Material+Icons");
+    body {
+        overflow-x: hidden;
+    }
 
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;

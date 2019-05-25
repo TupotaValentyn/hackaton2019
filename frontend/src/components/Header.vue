@@ -15,8 +15,6 @@
 
 <style>
 
-    @import url('https://fonts.googleapis.com/css?family=Maven+Pro&display=swap');
-
     * {
         font-family: 'Maven Pro', sans-serif;
         box-sizing: border-box;
@@ -27,7 +25,8 @@
         height: 100vh;
         display: grid;
         place-content: center end;
-        background-image: url('../assets/header-01.png');
+        background-image: url('../assets/header2-01.png');
+        /*background-color: #FA7268;*/
         background-size: cover;
         padding: 0 300px 0 0;
         /*TODO: 'need select translate for text'*/

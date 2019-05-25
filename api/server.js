@@ -7,11 +7,15 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 const api = require('./routes/api');
 
+const cors = require('cors');
+
 mongoose.connect("mongodb://aleseyko:12345qwerty@ds147842.mlab.com:47842/lex-db",{ useNewUrlParser: true }, () => {
     console.log("[DB]: Successfully connected");
 });
 
 const bodyParser = require('body-parser');
+app.use(cors());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

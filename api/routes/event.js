@@ -21,12 +21,12 @@ router.get('/', function (req, res) {
 });
 
 router.post('/', (req, res) => {
-    const {name, description, locale, creatorId, hashtags} = req.body;
+    const {name, description, locale, creatorId, hashtags, image, type} = req.body;
     User.find({id: creatorId})
         .then(data => {
-            let event = new Event({name, description, locale, hashtags, id: id++, creator: data});
-            event.save((data) => {
-                res.send(data)
+            let event = new Event({name, description, locale, hashtags, type, id: id++, creator: data, image});
+            event.save((error, ev) => {
+                res.send(ev)
             });
         })
 });

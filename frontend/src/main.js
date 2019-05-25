@@ -4,6 +4,7 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
+import axios from 'axios'
 
 Vue.config.productionTip = false;
 
@@ -16,6 +17,8 @@ Vue.use(VueGoogleMaps, {
 });
 
 Vue.use(VueMaterial);
+
+Vue.use(axios);
 
 
 new Vue({

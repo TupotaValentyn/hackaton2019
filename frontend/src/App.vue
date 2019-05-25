@@ -38,8 +38,9 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        height: 200vh;
+        height: 250vh;
         width: 100vw;
+        background: white;
     }
 <<<<<<< HEAD
     .form {

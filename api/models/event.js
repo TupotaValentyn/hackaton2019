@@ -7,8 +7,11 @@ const event = mongoose.Schema({
     hashtags: Array(String),
     description: String,
     locale: Object,
+    type: String,
+    creator: Object,
+    image: String,
 });
 
-const Event = mongoose.model("questions", event);
+const Event = mongoose.model("events", event);
 
 module.exports = Event;

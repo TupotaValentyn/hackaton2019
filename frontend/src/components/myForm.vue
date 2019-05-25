@@ -36,33 +36,43 @@
                 <md-option value="scarface">Scarface</md-option>
             </md-select>
         </md-field>
-
+        <input type="file" @change="change">
         <md-dialog-actions>
-            <md-button class="md-primary" @click="$emit('exit')" >Close</md-button>
-            <md-button class="md-primary" @click="$emit('add', passData())">Save</md-button>
+            <md-button class="md-primary" @click="$emit('exit')">Close</md-button>
+            <md-button class="md-primary" @click="passData">Save</md-button>
         </md-dialog-actions>
-
     </div>
 </template>
 
 <script>
     export default {
         name: 'my-form',
-        data () {
+        data() {
             return {
                 name: null,
                 description: null,
                 selectedMovies: [],
-                movie: 'godfather'
+                movie: 'godfather',
+                image: null,
             }
         }, methods: {
             passData() {
-                return {
-                    name: this.name,
-                    description: this.description,
-                    selectedMovies: this.selectedMovies,
-                    movie: this.movie
-                }
+                const fr = new FileReader();
+                const image = this.image;
+                fr.addEventListener("load", (e) => {
+                    this.$emit('add',{
+                        name: this.name,
+                        description: this.description,
+                        selectedMovies: this.selectedMovies,
+                        movie: this.movie,
+                        image: e.target.result
+                    });
+                });
+
+                fr.readAsDataURL(image)
+            },
+            change(e) {
+                this.image = e.target.files[0];
             }
         }
     }

@@ -8,7 +8,6 @@ import 'vue-material/dist/theme/default.css'
 Vue.config.productionTip = false;
 
 
-
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyA3RjKhvjDZUSWHeh6h4mnFhESFs9rPeBw',
@@ -17,7 +16,6 @@ Vue.use(VueGoogleMaps, {
 });
 
 Vue.use(VueMaterial);
-
 
 
 new Vue({

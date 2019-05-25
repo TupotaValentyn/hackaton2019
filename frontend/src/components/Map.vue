@@ -8,22 +8,83 @@
         >
         </GmapMap>
 
-        <div class="list">
-            <md-checkbox v-model="array" value="1">Array</md-checkbox>
-            <md-checkbox v-model="array" value="2">Array</md-checkbox>
-            <md-checkbox v-model="array">Boolean</md-checkbox>
-        </div>
+        <ul class="list">
+            <li class="list-item" v-for="item in array" :key="item.id">
+                <md-checkbox  v-model="item.value">Array</md-checkbox>
+            </li>
+
+        </ul>
+
+        <md-dialog :md-active.sync="showDialog">
+            <md-dialog-title>Preferences</md-dialog-title>
+
+            <md-tabs md-dynamic-height>
+                <md-tab md-label="General">
+                    <my-form @exit="showDialog=false" @add="showDialog=false"></my-form>
+                </md-tab>
+
+            </md-tabs>
+
+        </md-dialog>
+
+        <md-button class="md-primary md-raised" @click="showDialog = true">Show Dialog</md-button>
     </div>
 </template>
 
 <script>
+
+    import myForm from './myForm'
+
     export default {
         name: 'map',
         props: [],
-        data: () => ({
-            array: [],
-            boolean: false,
-        })
+        components: {
+            myForm
+        },
+        data() {
+            return {
+                showDialog: false,
+                first: false,
+                second: false,
+
+                array: [{
+                    id: 0,
+                    value: false,
+                }, {
+                    id: 1,
+                    value: false,
+                }, {
+                    id: 2,
+                    value: false,
+                },
+                {
+                    id: 3,
+                    value: false,
+                }, {
+                    id: 4,
+                    value: false,
+                }, {
+                    id: 5,
+                    value: false,
+                },
+                {
+                    id: 6,
+                    value: false,
+                }, {
+                    id: 7,
+                    value: false,
+                }, {
+                    id: 9,
+                    value: false,
+                }]
+            }
+        },
+        methods: {
+            log() {
+                console.log(this.array)
+            }
+        },
+
     }
 </script>
 
@@ -43,4 +104,11 @@
         margin: 0 auto;
         background: gray;
     }
+
+    .list {
+        list-style: none;
+        display: grid;
+        grid: repeat(3, 1fr) / repeat(3, 1fr);
+    }
+
 </style>

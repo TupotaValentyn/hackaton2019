@@ -7,19 +7,22 @@
 
 <script>
     import Header from './components/Header.vue'
-    import Map from './components/Map'
+    import Map from './components/Map.vue'
+    import myForm from './components/myForm'
 
     export default {
         name: 'app',
-        data: function () {
+        data () {
             return {
-                name: 'map',
+
             }
         },
         components: {
+            myForm,
             Header,
             Map
-        }
+        },
+
     }
 </script>
 
@@ -37,6 +40,9 @@
         color: #2c3e50;
         height: 200vh;
         width: 100vw;
+    }
+    .form {
+        width: 500px;
     }
 
     * {

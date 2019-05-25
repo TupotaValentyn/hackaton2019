@@ -1,16 +1,24 @@
 <template>
     <div id="app">
         <Header/>
+        <Map />
     </div>
 </template>
 
 <script>
-    import Header from './components/header.vue'
+    import Header from './components/Header.vue'
+    import Map from './components/Map'
 
     export default {
         name: 'app',
+        data: function () {
+            return {
+                name: 'map',
+            }
+        },
         components: {
-            Header
+            Header,
+            Map
         }
     }
 </script>
@@ -23,7 +31,7 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        height: 100vh;
+        height: 200vh;
         width: 100vw;
     }
 

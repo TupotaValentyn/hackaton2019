@@ -26,7 +26,6 @@
         display: grid;
         place-content: center end;
         background-image: url('../assets/header2-01.png');
-        /*background-color: #FA7268;*/
         background-size: cover;
         padding: 0 300px 0 0;
         /*TODO: 'need select translate for text'*/

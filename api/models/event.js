@@ -7,6 +7,7 @@ const event = mongoose.Schema({
     hashtags: Array(String),
     description: String,
     locale: Object,
+    creator: Object,
 });
 
 const Event = mongoose.model("questions", event);

@@ -1,42 +1,34 @@
 <template>
-    <!--<div class="container">-->
-        <!--<GmapMap-->
-                <!--class="map"-->
-                <!--:center="{lat: 49.43777386178491, lng: 32.06162042036193}"-->
-                <!--:zoom="12"-->
-                <!--map-type-id="terrain"-->
-        <!--&gt;-->
-        <!--</GmapMap>-->
+    <div class="container">
+        <GmapMap
+                class="map"
+                :center="{lat: 49.43777386178491, lng: 32.06162042036193}"
+                :zoom="12"
+                map-type-id="terrain"
+        >
+        </GmapMap>
 
-        <!--<ul class="list">-->
-            <!--<li class="list-item" v-for="item in array" :key="item.id">-->
-                <!--<md-checkbox  v-model="item.value">Array</md-checkbox>-->
-            <!--</li>-->
+        <ul class="list">
+            <li class="list-item" v-for="item in array" :key="item.id">
+                <md-checkbox  v-model="item.value">Array</md-checkbox>
+            </li>
 
-        <!--</ul>-->
-        <!--<button v-on:click="log">-->
-            <!--Status-->
-        <!--</button>-->
-    <!--</div>-->
+        </ul>
 
+        <md-dialog :md-active.sync="showDialog">
+            <md-dialog-title>Preferences</md-dialog-title>
 
-    <my-form></my-form>
+            <md-tabs md-dynamic-height>
+                <md-tab md-label="General">
+                    <my-form @exit="showDialog=false" @add="showDialog=false"></my-form>
+                </md-tab>
 
-    <!--<div>-->
+            </md-tabs>
 
-        <!--<md-dialog-alert-->
-                <!--:md-active.sync="first"-->
-                <!--md-content=""-->
-                <!--md-confirm-text="Cool!" />-->
+        </md-dialog>
 
-        <!--<md-dialog-alert-->
-                <!--:md-active.sync="second"-->
-                <!--md-title="Post created!"-->
-                <!--md-content="Your post <strong>Material Design is awesome</strong> has been created." />-->
-
-        <!--<md-button class="md-accent md-raised" @click="first = true">Alert</md-button>-->
-        <!--<md-button class="md-primary md-raised" @click="second = true">Alert</md-button>-->
-    <!--</div>-->
+        <md-button class="md-primary md-raised" @click="showDialog = true">Show Dialog</md-button>
+    </div>
 </template>
 
 <script>
@@ -51,6 +43,7 @@
         },
         data() {
             return {
+                showDialog: false,
                 first: false,
                 second: false,
 

@@ -2,18 +2,12 @@
     <div class="form">
         <md-field>
             <label>Name</label>
-            <md-input v-model="Name"></md-input>
+            <md-input v-model="name"></md-input>
         </md-field>
 
-        <!--<md-field :class="messageClass">-->
-            <!--<label>Required Field</label>-->
-            <!--<md-input v-model="required" required></md-input>-->
-            <!--<span class="md-error">There is an error</span>-->
-        <!--</md-field>-->
-
-        <md-field :class="messageClass">
+        <md-field class="description">
             <label>Description</label>
-            <md-textarea v-model="textarea"></md-textarea>
+            <md-textarea v-model="description"></md-textarea>
             <span class="md-helper-text">write short description about event</span>
         </md-field>
 
@@ -43,6 +37,10 @@
             </md-select>
         </md-field>
 
+        <md-dialog-actions>
+            <md-button class="md-primary" @click="$emit('exit')" >Close</md-button>
+            <md-button class="md-primary" @click="$emit('add', passData())">Save</md-button>
+        </md-dialog-actions>
 
     </div>
 </template>
@@ -52,18 +50,18 @@
         name: 'my-form',
         data () {
             return {
-                Name: null,
-                required: null,
-                textarea: null,
-                hasMessages: false,
+                name: null,
+                description: null,
                 selectedMovies: [],
                 movie: 'godfather'
             }
-        },
-        computed: {
-            messageClass() {
+        }, methods: {
+            passData() {
                 return {
-                    'md-invalid': this.hasMessages
+                    name: this.name,
+                    description: this.description,
+                    selectedMovies: this.selectedMovies,
+                    movie: this.movie
                 }
             }
         }
@@ -72,6 +70,6 @@
 
 <style scoped>
     .md-field {
-        max-width: 300px;
+        /*max-width: 300px;*/
     }
 </style>

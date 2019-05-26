@@ -3,8 +3,7 @@
         <img class="girl" src="../assets/header.png" alt="">
         <h2 class="info">
             <div class="wrap-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam cum harum officiis possimus quas
-                quasi, quibusdam similique! Rerum, voluptate.
+                То є - щастя, то є ваша страсть і ваша істінна любовь.
             </div>
         </h2>
     </header>

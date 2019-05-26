@@ -64,4 +64,13 @@
     .md-button.md-tab-nav-button.md-theme-default.md-active {
         display: none;
     }
+
+    .md-tabs-container {
+        min-width: 570px;
+    }
+
+    .md-dialog.md-dialog-fullscreen.md-theme-default {
+        max-height: 85%;
+    }
+
 </style>

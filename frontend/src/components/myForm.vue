@@ -1,5 +1,5 @@
 <template>
-    <div class="form">
+    <div class="form" style="min-height: 780px">
         <md-field>
             <label>Name</label>
             <md-input v-model="name"></md-input>
@@ -38,7 +38,11 @@
                 <md-option value="Other">Other</md-option>
             </md-select>
         </md-field>
-        <input type="file" @change="change">
+        <div style="height: 200px; width: 200px">
+            <img :src="imageSrc" alt="" style="height: 200px; width: 200px">
+        </div>
+        <label :for="'i228'">Upload image</label>
+        <input type="file" @change="change" :id="'i228'" style="display: none">
         <md-dialog-actions>
             <md-button class="md-primary" @click="$emit('exit')">Close</md-button>
             <md-button class="md-primary" @click="passData">Save</md-button>
@@ -56,6 +60,7 @@
                 selectedMovies: [],
                 movie: 'godfather',
                 image: null,
+                imageSrc: '.',
             }
         }, methods: {
             passData() {
@@ -75,6 +80,13 @@
             },
             change(e) {
                 this.image = e.target.files[0];
+                const fr2 = new FileReader();
+                const image = this.image;
+                fr2.addEventListener("load", (e) => {
+                    this.imageSrc = e.target.result;
+                });
+
+                fr2.readAsDataURL(image)
             }
         }
     }

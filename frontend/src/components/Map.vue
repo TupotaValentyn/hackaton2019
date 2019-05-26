@@ -170,7 +170,10 @@
                     creatorId: 1,
                 };
                 axios.post('http://localhost:3000/api/event/', event)
-                    .then((data) => this.marks.push(data.data));
+                    .then((data) => {
+                        console.log(data.data);
+                        this.marks.push(data.data)
+                    });
 
             }
         },

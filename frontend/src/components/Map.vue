@@ -14,10 +14,53 @@
             >
                 <gmap-info-window :opened="mark.isOpen" @closeclick="closeInfoWindow(mark.id)">
                     <div class="notification">
-                        I can use <b>HTML</b> here and expressions too !<br>
-                        I am not bound to any markers. I'm freeee.
+                        <ul>
+                            <li>
+                                <span class="name">
+                                    Event name:
+                                </span>
+                                <span class="data">
+                                    {{mark.name}}
+                                </span>
+                            </li>
+                            <li>
+                                <span class="name">
+                                    description:
+                                </span>
+                                <span class="data">
+                                    {{mark.description}}
+                                </span>
+                            </li>
+                            <li>
+                                <span class="name">
+                                    Name of creator:
+                                </span>
+                                <span class="data">
+                                    {{mark.creator[0].name}}
+                                </span>
+                            </li>
+                            <li>
+                                <span class="name">
+                                    Contacts data:
+                                </span>
+                                <span class="data">
+                                    0987654321
+                                </span>
+                            </li>
+                            <li>
+                                <span class="name">
+                                    Date:
+                                </span>
+                                <span class="data">
+                                    23.05.2019
+                                </span>
+                            </li>
+                            <li class="last">
+                                <img :src="mark.image" alt="Something wrong">
+
+                            </li>
+                        </ul>
                     </div>
-                    <img :src="mark.image" alt="Something wrong">
                 </gmap-info-window>
             </GmapMarker>
         </GmapMap>
@@ -123,6 +166,7 @@
                         e.isOpen = false;
                         return e;
                     });
+                    console.log(this.marks)
                 })
         },
         methods: {
@@ -253,8 +297,37 @@
     }
 
     .notification {
-        background: #000;
+        /*background: red;*/
+        height: 300px;
+        width: 300px;
+
     }
 
+    .notification ul {
+        display: grid;
+        grid: repeat(5, auto)/ 1fr;
+    }
+
+    .notification ul li {
+        display: grid;
+        justify-content: space-between;
+        grid: 1fr/ 1fr 1fr;
+    }
+
+    .notification ul li.last {
+        grid: 1fr/ 1fr;
+        place-items: center;
+    }
+
+    .name {
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .data {
+        text-align: left;
+        text-transform: uppercase;
+
+    }
 
 </style>

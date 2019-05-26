@@ -21,8 +21,7 @@
             myForm,
             Header,
             Map
-        },
-
+        }
     }
 </script>
 
@@ -42,19 +41,27 @@
         width: 100vw;
         background: white;
     }
-<<<<<<< HEAD
-    .form {
-        width: 500px;
-    }
 
-=======
-    .marker {
-        width: 16px !important;
-        height: 16px !important;
-    }
->>>>>>> add marker
     * {
         margin: 0;
         padding: 0;
+    }
+    
+    /*.md-dialog .md-dialog-fullscreen .md-theme-default {*/
+        /*position: relative;*/
+    /*}*/
+
+    /*.md-dialog.md-dialog-fullscreen.md-theme-default::after {*/
+        /*content: '';*/
+        /*position: absolute;*/
+        /*top: 0;*/
+        /*width: 500px;*/
+        /*height: 500px;*/
+        /*background: url("./assets/13-01-01.png");*/
+    /*}*/
+
+
+    .md-button.md-tab-nav-button.md-theme-default.md-active {
+        display: none;
     }
 </style>

@@ -24,7 +24,6 @@
     }
 
     .girl {
-        /*width: 800px;*/
         background-color: white;
     }
 

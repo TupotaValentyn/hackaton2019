@@ -14,9 +14,9 @@
         <md-field>
             <label for="movies">Movies</label>
             <md-select v-model="selectedMovies" name="movies" id="movies" multiple>
-                <md-option value="fight-club">Fight Club</md-option>
-                <md-option value="godfather">Godfather</md-option>
-                <md-option value="godfather-ii">Godfather II</md-option>
+                <md-option value="fight-club">Flex dancing</md-option>
+                <md-option value="godfather">Have a rest - gora</md-option>
+                <md-option value="godfather-ii">BezuderЖnoe viselьye</md-option>
                 <md-option value="godfather-iii">Godfather III</md-option>
                 <md-option value="godfellas">Godfellas</md-option>
                 <md-option value="pulp-fiction">Pulp Fiction</md-option>
@@ -27,13 +27,15 @@
         <md-field>
             <label for="movie1">Movie</label>
             <md-select v-model="movie" name="movie" id="movie1">
-                <md-option value="fight-club">Fight Club</md-option>
-                <md-option value="godfather">Godfather</md-option>
-                <md-option value="godfather-ii">Godfather II</md-option>
-                <md-option value="godfather-iii">Godfather III</md-option>
-                <md-option value="godfellas">Godfellas</md-option>
-                <md-option value="pulp-fiction">Pulp Fiction</md-option>
-                <md-option value="scarface">Scarface</md-option>
+                <md-option value="Meeting">Meeting</md-option>
+                <md-option value="Travel">Travel</md-option>
+                <md-option value="Sport">Sport</md-option>
+                <md-option value="Food">Food</md-option>
+                <md-option value="Car">Car</md-option>
+                <md-option value="DviЖ">DviЖ</md-option>
+                <md-option value="Shop">Shop</md-option>
+                <md-option value="Alcohol">Alcohol</md-option>
+                <md-option value="Other">Other</md-option>
             </md-select>
         </md-field>
         <input type="file" @change="change">

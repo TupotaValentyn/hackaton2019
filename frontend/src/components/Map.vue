@@ -21,7 +21,9 @@
 
         <ul class="list">
             <li class="list-item" v-for="item in array" :key="item.id">
-                <md-checkbox v-model="item.value" class="md-primary">Array</md-checkbox>
+                <img class="categories" :src="'/img/' + item.content + '.png'" alt="pic">
+                <p class="content">{{item.content}}</p>
+                <md-checkbox v-model="item.value"></md-checkbox>
             </li>
 
         </ul>
@@ -62,33 +64,44 @@
                 array: [{
                     id: 0,
                     value: false,
+                    content: 'meeting'
                 }, {
                     id: 1,
                     value: false,
+                    content: 'food'
                 }, {
                     id: 2,
                     value: false,
+                    content: 'shop'
                 },
                     {
                         id: 3,
                         value: false,
+                        content: 'travel'
                     }, {
                         id: 4,
                         value: false,
+                        content: 'car'
                     }, {
                         id: 5,
                         value: false,
+                        content: 'alcohol'
                     },
                     {
                         id: 6,
                         value: false,
+                        content: 'sport'
                     }, {
                         id: 7,
                         value: false,
+                        content: 'dviЖ'
                     }, {
                         id: 9,
                         value: false,
-                    }],
+                        content: 'other'
+                    }
+
+                ],
                 center: {lat: 0, lng: 0},
                 formsCoordinate: {lat: 0, lng: 0},
                 isAdd: false,
@@ -109,6 +122,7 @@
                 })
         },
         methods: {
+
             click(event) {
                 if (this.isAdd) {
                     let coordinate = {lat: event.latLng.lat(), lng: event.latLng.lng()};
@@ -156,6 +170,7 @@
                 };
                 axios.post('http://localhost:3000/api/event/', event)
                     .then((data) => this.marks.push(data.data));
+
             }
         },
     }
@@ -164,13 +179,23 @@
 <style scoped>
     .map {
         width: 60vw;
-        height: 50vh;
+        height: 70vh;
+        border: 15px solid #2d2e83;
+        border-radius: 20px;
+    }
+
+    .content {
+        margin: 0 10px;
+        height: 50px;
+        line-height: 50px;
+        width: 100px;
+
     }
 
     .container {
         display: grid;
         place-content: start center;
-        padding: 150px 0 0 0;
+        padding: 250px 0 0 0;
         width: 100vw;
         height: 100vh;
         background: white !important;
@@ -179,9 +204,21 @@
     }
 
     .list {
+        margin: 60px 0;
         list-style: none;
         display: grid;
         grid: repeat(3, 1fr) / repeat(3, 1fr);
+    }
+
+    .list-item {
+        display: flex;
+        place-content: center;
+    }
+
+    .categories {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
     }
 
 </style>

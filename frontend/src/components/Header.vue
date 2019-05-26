@@ -1,8 +1,11 @@
 <template>
     <header class="header">
+        <img class="girl" src="../assets/header.png" alt="">
         <h2 class="info">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam cum harum officiis possimus quas
-            quasi, quibusdam similique! Rerum, voluptate.
+            <div class="wrap-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam cum harum officiis possimus quas
+                quasi, quibusdam similique! Rerum, voluptate.
+            </div>
         </h2>
     </header>
 </template>
@@ -20,13 +23,40 @@
         box-sizing: border-box;
     }
 
+    .girl {
+        /*width: 800px;*/
+        background-color: white;
+    }
+
+    h2 {
+        display: grid;
+        place-content: center;
+    }
+
+    .wrap-text {
+        position: relative;
+        
+    }
+
+    .wrap-text::after {
+        content: '';
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        top: -95px;
+        right: 5px;
+        background: url("../assets/kisspng_emojipedia_unicorn_sticker.png");
+        background-size: cover;
+    }
+
     .header {
         width: 100vw;
         height: 100vh;
         display: grid;
-        place-content: center end;
-        background-image: url('../assets/header2-01.png');
-        background-size: cover;
+        grid: 1fr/ 1200px 1fr;
+        background: white;
+        /*place-content: center end;*/
+        justify-content: space-between;
         padding: 0 300px 0 0;
         /*TODO: 'need select translate for text'*/
     }

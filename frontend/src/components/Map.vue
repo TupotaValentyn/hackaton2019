@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <span v-if="isAdd">Select location, by click on the map</span>
+
         <GmapMap
                 class="map"
                 :center="center"
@@ -85,7 +85,7 @@
             </md-tabs>
 
         </md-dialog>
-
+        <h1 v-if="isAdd">Select location, by click on the map</h1>
         <md-button class="md-primary md-raised add" @click="addEvent">Add event</md-button>
     </div>
 </template>

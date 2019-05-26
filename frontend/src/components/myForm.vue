@@ -1,5 +1,5 @@
 <template>
-    <div class="form" style="min-height: 780px">
+    <div class="form" style="height: 850px">
         <md-field>
             <label>Name</label>
             <md-input v-model="name"></md-input>
@@ -38,8 +38,20 @@
                 <md-option value="Other">Other</md-option>
             </md-select>
         </md-field>
-        <div style="height: 200px; width: 200px">
-            <img :src="imageSrc" alt="" style="height: 200px; width: 200px">
+
+        <md-field>
+            <md-datepicker v-model="selectedDate">
+                <label>Select date</label>
+            </md-datepicker>
+        </md-field>
+
+        <md-field>
+            <label>Contacts</label>
+            <md-input v-model="contacts"></md-input>
+        </md-field>
+
+        <div style="height: 150px; width: 150px">
+            <img :src="imageSrc" alt="" style="height: 150px; width: 150px">
         </div>
         <label :for="'i228'">Upload image</label>
         <input type="file" @change="change" :id="'i228'" style="display: none">
@@ -61,6 +73,8 @@
                 movie: 'godfather',
                 image: null,
                 imageSrc: '.',
+                contacts: '',
+                selectedDate: null
             }
         }, methods: {
             passData() {
@@ -93,6 +107,8 @@
 </script>
 
 <style scoped>
+
+
     .md-field {
         /*max-width: 300px;*/
     }

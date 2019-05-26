@@ -9,6 +9,7 @@
                 @click="click"
         >
             <GmapMarker v-for="mark in marks" :position="mark.locale" :title="'Lex'" @click="markClick(mark.id)"
+                        :icon="'/img/' + mark.type.toLowerCase() + '.png'"
                         :key="mark.id"
             >
                 <gmap-info-window :opened="mark.isOpen" @closeclick="closeInfoWindow(mark.id)">
@@ -25,7 +26,8 @@
             <li class="list-item" v-for="item in array" :key="item.id">
                 <img class="categories" :src="'/img/' + item.content + '.png'" alt="pic">
                 <p class="content">{{item.content}}</p>
-                <md-checkbox v-model="item.value" class="md-primary"></md-checkbox>
+                <md-checkbox v-model="item.value" class="md-primary"
+                             @change="changeChexbox"></md-checkbox>
             </li>
 
         </ul>
@@ -106,7 +108,8 @@
                 center: {lat: 0, lng: 0},
                 formsCoordinate: {lat: 0, lng: 0},
                 isAdd: false,
-                marks: [{}]
+                marks: [{}],
+                fullMarks: [{}]
             }
         },
         computed: {},
@@ -116,7 +119,7 @@
             });
             axios.get('http://localhost:3000/api/event')
                 .then((data) => {
-                    this.marks = data.data.map(e => {
+                    this.fullMarks = this.marks = data.data.map(e => {
                         e.isOpen = false;
                         return e;
                     });
@@ -158,7 +161,6 @@
             saveEvent($event) {
                 this.showDialog = false;
                 this.isAdd = false;
-                console.log($event);
                 const {description, name, movie, selectedMovies, image} = $event;
                 let event = {
                     description,
@@ -170,9 +172,20 @@
                     creatorId: 1,
                 };
                 axios.post('http://localhost:3000/api/event/', event)
-                    .then((data) => this.marks.push(data.data));
-
-            }
+                    .then((data) => {
+                        this.marks.push(data.data)
+                    });
+            },
+            changeChexbox($event) {
+                const filters = this.array.filter(e => e.value).map((e) => e.content);
+                if (filters.length != 0) {
+                    this.marks = this.fullMarks.filter((el) => {
+                        return filters.includes(el.type.toLowerCase());
+                    })
+                } else {
+                    this.marks = this.fullMarks.map(e => e);
+                }
+            },
         },
     }
 </script>
@@ -242,7 +255,6 @@
     .notification {
         background: #000;
     }
-
 
 
 </style>

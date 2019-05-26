@@ -12,8 +12,10 @@
                         :key="mark.id"
             >
                 <gmap-info-window :opened="mark.isOpen" @closeclick="closeInfoWindow(mark.id)">
-                    I can use <b>HTML</b> here and expressions too !<br>
-                    I am not bound to any markers. I'm freeee.
+                    <div class="notification">
+                        I can use <b>HTML</b> here and expressions too !<br>
+                        I am not bound to any markers. I'm freeee.
+                    </div>
                     <img :src="mark.image" alt="Something wrong">
                 </gmap-info-window>
             </GmapMarker>
@@ -23,16 +25,15 @@
             <li class="list-item" v-for="item in array" :key="item.id">
                 <img class="categories" :src="'/img/' + item.content + '.png'" alt="pic">
                 <p class="content">{{item.content}}</p>
-                <md-checkbox v-model="item.value"></md-checkbox>
+                <md-checkbox v-model="item.value" class="md-primary"></md-checkbox>
             </li>
 
         </ul>
 
         <md-dialog :md-active.sync="showDialog">
-            <md-dialog-title>Preferences</md-dialog-title>
 
             <md-tabs md-dynamic-height>
-                <md-tab md-label="General">
+                <md-tab md-label="">
                     <my-form @exit="showDialog=false" @add="saveEvent"></my-form>
                 </md-tab>
 
@@ -40,7 +41,7 @@
 
         </md-dialog>
 
-        <md-button class="md-primary md-raised" @click="addEvent">Add event</md-button>
+        <md-button class="md-primary md-raised add" @click="addEvent">Add event</md-button>
     </div>
 </template>
 
@@ -177,6 +178,11 @@
 </script>
 
 <style scoped>
+
+    * {
+        font-family: 'Maven Pro', sans-serif;
+    }
+
     .map {
         width: 60vw;
         height: 70vh;
@@ -220,5 +226,23 @@
         height: 40px;
         object-fit: cover;
     }
+
+    .add {
+        display: grid;
+        width: 40%;
+        place-self: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .md-button.md-tab-nav-button.md-theme-default.md-active {
+        display: none !important;
+    }
+
+    .notification {
+        background: #000;
+    }
+
+
 
 </style>
